@@ -1,0 +1,79 @@
+/* v-scroll.css - 虚拟滚动条组件样式 */
+/* 使用 CSS 伪类和 part 暴露给外部控制 */
+
+/* 滚动轨道 */
+v-scroll::part(track) {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+/* 滚动轨道 - 悬停时显示 */
+v-scroll[data-hover]::part(track){
+  opacity: 1;
+}
+
+/* 滑块 */
+v-scroll::part(thumb) {
+  position: absolute;
+  right: 0;
+  width: 10px;
+  min-height: 16px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: background-color 0.2s ease, opacity 0.3s ease;
+}
+
+/* 滑块 - 悬停状态 */
+v-scroll::part(thumb):hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+v-scroll[data-dragging]::part(thumb):hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* 滚动轨道 - 悬停时显示 */
+v-scroll:hover::part(thumb) {
+  opacity: 1;
+}
+
+/* 滚动容器 - 隐藏原生滚动条 */
+v-scroll::part(container) {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* Webkit浏览器隐藏原生滚动条 */
+v-scroll::part(container)::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* 内容包装器 */
+v-scroll::part(content) {
+  position: relative;
+  min-height: 100%;
+}
+
+/* 外部可覆盖的变量 */
+v-scroll {
+  --v-scroll-track-width: 10px;
+  --v-scroll-track-bg: rgba(0, 0, 0, 0.1);
+  --v-scroll-bar-bg: rgba(0, 0, 0, 0.3);
+  --v-scroll-bar-hover-bg: rgba(0, 0, 0, 0.5);
+  --v-scroll-bar-drag-bg: rgba(0, 0, 0, 0.7);
+  --v-scroll-bar-min-height: 16px;
+  --v-scroll-track-padding: 3px;
+}
