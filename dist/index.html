@@ -8,13 +8,7 @@
     <title>V-Scroll 虚拟滚动条演示</title>
 
     <!-- Import Map - 可在此切换主题/样式 -->
-    <script type="importmap">
-  {
-    "imports": {
-      "$/v-scroll.js": "/v-scroll.js"
-    }
-  }
-  </script>
+
 
     <!-- 外部样式覆盖示例 -->
     <style>
@@ -62,6 +56,14 @@
             font-size: 20px;
         }
     </style>
+    <script type="importmap">
+  {
+    "imports": {
+      "$/v-scroll.js": "/v-scroll.js"
+    }
+  }
+  </script>
+  <script type="module" crossorigin src="/v-scroller/assets/index-DhRJlPAz.js"></script>
 </head>
 
 <body>
@@ -77,16 +79,6 @@
         </div>
     </div>
 
-    <script type="module">
-        // 1. 导入组件
-        import '$/v-scroll.js';
-        const content = document.querySelector('.content-paragraph');
-        for (let i = 0; i < 100; i++) {
-            const p = document.createElement('p');
-            p.textContent = `Welcome to Vibe ${i + 1}`;
-            content.appendChild(p);
-        }
-    </script>
 </body>
 
 </html>

@@ -7,9 +7,9 @@ v-scroll::part(track) {
   right: 0;
   top: 0;
   bottom: 0;
-  width: 10px;
+  width: 15px;
   background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -21,9 +21,9 @@ v-scroll[data-hover]::part(track){
 /* 滑块 */
 v-scroll::part(thumb) {
   position: absolute;
-  right: 0;
-  width: 10px;
-  min-height: 16px;
+  right: 3px;
+  width: 7px;
+  min-height: 26px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   cursor: pointer;
@@ -36,7 +36,7 @@ v-scroll::part(thumb):hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 v-scroll[data-dragging]::part(thumb):hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 

@@ -1,5 +1,5 @@
 // v-scroll.js - 虚拟滚动条Web组件
-import CSS from "$/v-scroll.js"; // 通过import映射导入压缩后的CSS字符串
+import CSS from "$/v-scroll.css.js"; // 通过import映射导入压缩后的CSS字符串
 
 class VScroll extends HTMLElement {
   static get observedAttributes() {
@@ -154,7 +154,12 @@ class VScroll extends HTMLElement {
     }
 
     this.scrollBar.style.display = 'block';
-
+    this.scrollBar.addEventListener('mouseenter', () => {
+      this.setAttribute('data-hover', 'true');
+    })
+    this.scrollBar.addEventListener('mouseleave', () => {
+      this.removeAttribute('data-hover');
+    })
     // 计算滑块尺寸和位置
     const trackHeight = this.track.clientHeight;
     const minThumbHeight = 16;
@@ -195,7 +200,7 @@ class VScroll extends HTMLElement {
     this.thumb.setPointerCapture(event.pointerId);
     
     // 添加拖拽状态
-    this.thumb.setAttribute('data-dragging', 'true');
+    this.setAttribute('data-dragging', 'true');
   }
 
   handlePointerMove(event) {
@@ -231,7 +236,7 @@ class VScroll extends HTMLElement {
     }
     
     // 移除拖拽状态
-    this.thumb.removeAttribute('data-dragging');
+    this.removeAttribute('data-dragging');
   }
 
   // 清理资源
